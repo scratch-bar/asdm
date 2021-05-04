@@ -2,6 +2,8 @@ name: Mirror and push
 
 on: 
   workflow_dispatch:
+  schedule:
+    - cron:  '45 11 * * 3'
   
 
 jobs:
@@ -28,4 +30,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: dl
-        path: output/
+        path: |
+          output/scratch-win.exe
+          output/scratch-mac.dmg
+        retention-days: 14
