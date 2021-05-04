@@ -22,8 +22,7 @@ jobs:
       run: pip install requests
  
     - name: Update paper list
-      run: |
-        python dl.py
+      run: python dl.py
         
     - name: Output files
       uses: actions/upload-artifact@v2
