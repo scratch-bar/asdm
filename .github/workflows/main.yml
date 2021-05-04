@@ -23,7 +23,7 @@ jobs:
     - name: Install requests
       run: pip install requests
  
-    - name: Update paper list
+    - name: Download
       run: python dl.py
         
     - name: Output for windows
