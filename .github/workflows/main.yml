@@ -29,13 +29,13 @@ jobs:
     - name: Output for windows
       uses: actions/upload-artifact@v2
       with:
-        name: dl
+        name: sc-win.exe
         path: output/scratch-win.exe
         retention-days: 14
 
     - name: Output for macos
       uses: actions/upload-artifact@v2
       with:
-        name: dl
-        path: output/scratch-mac.exe
+        name: sc-mac.dmg
+        path: output/scratch-mac.dmg
         retention-days: 14
