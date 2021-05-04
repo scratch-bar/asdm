@@ -4,6 +4,9 @@ on:
   workflow_dispatch:
   schedule:
     - cron:  '45 11 * * 3'
+  create:
+    tags:
+      - v*
   
 
 jobs:
