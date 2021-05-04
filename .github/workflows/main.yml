@@ -1,0 +1,32 @@
+name: Mirror and push
+
+on: 
+  workflow_dispatch:
+  
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: checkout actions
+    - uses: actions/checkout@v1
+
+    - name: Set up Python 3.7
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.7
+     
+    - name: Install requests
+      run: pip install requests
+ 
+    - name: Update paper list
+      run: |
+        python dl.py
+        
+    - name: Output files
+      uses: actions/upload-artifact@v2
+      with:
+        name: dl
+        path: output/
