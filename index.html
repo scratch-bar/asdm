@@ -1,0 +1,133 @@
+<html>
+
+<head>
+    <title>Auto Scratch GUI Mirror</title>
+    <style>
+        .title {
+            font-size: 1.4em;
+            font-weight: bolder;
+            text-align: center;
+        }
+
+        .about {
+            margin: 1.5em 2em 0em 2em;
+        }
+
+        .download {
+            margin: 1.5em 2em 0em 2em;
+        }
+
+        .win-logo {
+            display: inline-block;
+            width: 1em;
+            height: 1em;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAAjElEQVQoFZWS0RGAIAxDxXMUN3EGp3Aep3AGN3GXWiyluVrw9IeSvBBOTUQ0/HmmEE7z8tbpOllM0hASYSY3NOl1L5lj40Ea4ErVZvMhCs0LW6pAwHydFNJ9XiEQ2YjKDAFnNm4IgUp0q0Z37ucWGhzb6IFAg3DnQAAc+UYg2GiBDmR4/ZdQ6s+/39INSlgls2dBSboAAAAASUVORK5CYII=");
+        }
+
+        .mac-logo {
+            display: inline-block;
+            width: 1em;
+            height: 1em;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAAbklEQVQoFaWRUQrAMAhD5+j9r+xkQkkTVynrl0RfotTc/Tp5tw7b+1RPpQCyEVTJFMB+Sdu3NWSoFMrcR+04YY6iEWLLDeU0Bka9AOj6VTcALpMW9dFoT0yTEFfRYQ2AUVn/A2jdtCSRP053IOUBZpkhG8h1oY4AAAAASUVORK5CYII=");
+        }
+
+        #dlabout {
+            display: block;
+            font-size: .75em;
+        }
+
+        .showresabout {
+            display: inline-block;
+            width: 1em;
+            height: 1em;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAAdklEQVQoFa2PUQrAMAhD5+j9r+yEQJqlljHoPkbUl1gjM68/3zA4Ithps26OSyi9liBfBrQqmNkVYSnTYAO1IajfwGyFVM8N6Ooe1fTELpK0Ab7B9hhd094A20p/GGCz//YG41j2T6qLeTRRiN5gkJaHnqSRph8bLSccxzz62wAAAABJRU5ErkJggg==");
+        }
+
+        .showresabout:hover {
+            cursor: help;
+        }
+
+        .opensource {
+            display: inline-block;
+            width: 1em;
+            height: 1em;
+            margin-right: .25em;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAAf0lEQVQoFZWS2w6AMAhDxfj/v4xNukDFgXEPC5dTyozm7sefc82wmQXA0Wfk6PFEhQG5WGQJgEapCNDSysMBjSIrKYAleDd0qsbpoNUh/hCUB2BQ+1kV1YX3Dh29cRhQPiwd1Be9kpLGnYIBCroK2OBs3W0SgO5QytpfSKdqfAO8nTMZDRfeKQAAAABJRU5ErkJggg==");
+        }
+
+        #windl,
+        #macdl {
+            font-family: Consolas, 'Courier New', Courier, monospace;
+        }
+
+        a {
+            color: #1976d2;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #e6ac00;
+        }
+
+        .font-mono {
+            font-family: Consolas, 'Courier New', Courier, monospace;
+        }
+    </style>
+</head>
+
+<body>
+    <p class="title font-mono">
+        Scratch-GUI 镜像计划<br /><span style="font-size:initial;">
+        <span class="opensource"></span>开源仓库：<a href="https://github.com/waterblock79/asgm/">Waterblock79 / asgm</a></span>
+    </p>
+    <hr />
+
+    <p class="about font-mono">  为方便广大吧友与社会各界 Scratch 爱好者，我们使用 <a
+            href="https://hub.fastgit.org/waterblock79/asgm/actions/workflows/main.yml">Github Action</a> (
+        从官方渠道将下载文件储存到 Github Release )、<a href="https://fastgit.org/">FastGit</a> ( 让用户更快速的从 Github 下载
+        )，自动的每周从官网镜像 Scratch 的离线版安装包。</p>
+
+    <div class="download">
+        <ref id="dlabout" class="font-mono"></ref><br />
+
+        <div class="win-logo" style="margin-right:0.5em"></div><a href="" id="windl"></a><br />
+        <div class="mac-logo" style="margin-right:0.5em"></div><a href="" id="macdl"></a><br /><br />
+
+        或者直接 <a href="https://hub.fastgit.org/waterblock79/asgm/releases/latest" class="font-mono">前往 Github
+            Releases</a> 下载
+        <span class="showresabout"
+            title="文件在 Assets 下，Windows 用户请点击 scratch-win.exe，MacOS 用户请点击 scratch-mac.dmg！"></span><br />
+    </div>
+    <script>
+        const f = {
+            $: (e) => { return document.querySelector(e) }
+        };
+        const xmlhttp = new XMLHttpRequest();
+        xmlhttp.open('GET', 'https://api.github.com/repos/waterblock79/asgm/releases', true);
+        xmlhttp.send();
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                let res = JSON.parse(xmlhttp.responseText);
+                f.$('#dlabout').innerHTML = `该版本镜像于 ${new Date(res[0]['published_at']).toLocaleString()} \n `;
+                // Windows
+                let winInfo = res[0]['assets'].filter((x) => { return x['name'].search("win") != -1 })[0];
+                f.$('#windl').href = winInfo['browser_download_url'].replace("github.com", "hub.fastgit.org");
+                f.$('#windl').innerHTML = "Windows 版本的 Scratch 离线版程序";
+                // Mac OS
+                let macInfo = res[0]['assets'].filter((x) => { return x['name'].search("mac") != -1 })[0];
+                f.$('#macdl').href = macInfo['browser_download_url'].replace("github.com", "hub.fastgit.org");
+                f.$('#macdl').innerHTML = "MacOS 版本的 Scratch 离线版程序";
+            }
+        }
+    </script>
+</body>
+
+</html>
