@@ -26,11 +26,16 @@ jobs:
     - name: Update paper list
       run: python dl.py
         
-    - name: Output files
+    - name: Output for windows
       uses: actions/upload-artifact@v2
       with:
         name: dl
-        path: |
-          output/scratch-win.exe
-          output/scratch-mac.dmg
+        path: output/scratch-win.exe
+        retention-days: 14
+
+    - name: Output for macos
+      uses: actions/upload-artifact@v2
+      with:
+        name: dl
+        path: output/scratch-mac.exe
         retention-days: 14
