@@ -31,4 +31,4 @@ jobs:
         artifacts: "output/scratch-win.exe,output/scratch-mac.dmg"
         token: ${{ secrets.PUBLISH }}
         body: " THIS IS AN MIRROR, FOR OFFICAL RELEASES, PLEASE GO HTTPS://SCRATCH.MIT.EDU/DOWNLOAD "
-        tag: ${{ github.run.id }}
+        tag: ${{ github.run_id }}
