@@ -2,131 +2,67 @@
 
 <head>
     <title>Auto Scratch Desktop Mirror</title>
-    <style>
-        .title {
-            font-size: 1.4em;
-            font-weight: bolder;
-            text-align: center;
-        }
-
-        .about {
-            margin: 1.5em 2em 0em 2em;
-        }
-
-        .download {
-            margin: 1.5em 2em 0em 2em;
-        }
-
-        .win-logo {
-            display: inline-block;
-            width: 1em;
-            height: 1em;
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAAjElEQVQoFZWS0RGAIAxDxXMUN3EGp3Aep3AGN3GXWiyluVrw9IeSvBBOTUQ0/HmmEE7z8tbpOllM0hASYSY3NOl1L5lj40Ea4ErVZvMhCs0LW6pAwHydFNJ9XiEQ2YjKDAFnNm4IgUp0q0Z37ucWGhzb6IFAg3DnQAAc+UYg2GiBDmR4/ZdQ6s+/39INSlgls2dBSboAAAAASUVORK5CYII=");
-        }
-
-        .mac-logo {
-            display: inline-block;
-            width: 1em;
-            height: 1em;
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAAbklEQVQoFaWRUQrAMAhD5+j9r+xkQkkTVynrl0RfotTc/Tp5tw7b+1RPpQCyEVTJFMB+Sdu3NWSoFMrcR+04YY6iEWLLDeU0Bka9AOj6VTcALpMW9dFoT0yTEFfRYQ2AUVn/A2jdtCSRP053IOUBZpkhG8h1oY4AAAAASUVORK5CYII=");
-        }
-
-        #dlabout {
-            display: block;
-            font-size: .75em;
-        }
-
-        .showresabout {
-            display: inline-block;
-            width: 1em;
-            height: 1em;
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAAdklEQVQoFa2PUQrAMAhD5+j9r+yEQJqlljHoPkbUl1gjM68/3zA4Ithps26OSyi9liBfBrQqmNkVYSnTYAO1IajfwGyFVM8N6Ooe1fTELpK0Ab7B9hhd094A20p/GGCz//YG41j2T6qLeTRRiN5gkJaHnqSRph8bLSccxzz62wAAAABJRU5ErkJggg==");
-        }
-
-        .showresabout:hover {
-            cursor: help;
-        }
-
-        .opensource {
-            display: inline-block;
-            width: 1em;
-            height: 1em;
-            margin-right: .25em;
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAAf0lEQVQoFZWS2w6AMAhDxfj/v4xNukDFgXEPC5dTyozm7sefc82wmQXA0Wfk6PFEhQG5WGQJgEapCNDSysMBjSIrKYAleDd0qsbpoNUh/hCUB2BQ+1kV1YX3Dh29cRhQPiwd1Be9kpLGnYIBCroK2OBs3W0SgO5QytpfSKdqfAO8nTMZDRfeKQAAAABJRU5ErkJggg==");
-        }
-
-        #windl,
-        #macdl {
-            font-family: Consolas, 'Courier New', Courier, monospace;
-        }
-
-        a {
-            color: #1976d2;
-            text-decoration: none;
-        }
-
-        a:hover {
-            color: #e6ac00;
-        }
-
-        .font-mono {
-            font-family: Consolas, 'Courier New', Courier, monospace;
-        }
-    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/css/mdui.min.css"
+        integrity="sha384-cLRrMq39HOZdvE0j6yBojO4+1PrHfB7a9l5qLcmRm/fiWXYY+CndJPmyu5FV/9Tw" crossorigin="anonymous" />
 </head>
 
 <body>
-    <p class="title font-mono">
-        Scratch-Desktop 镜像计划<br /><span style="font-size:initial;">
-        <span class="opensource"></span>开源仓库：<a href="https://github.com/waterblock79/asdm/">Waterblock79 / asdm</a></span>
-    </p>
-    <hr />
+    <div class="mdui-appbar mdui-shadow-3">
+        <div class="mdui-toolbar mdui-color-theme">
+            <i class="mdui-icon material-icons mdui-m-l-3" style="user-select: none">cloud_download</i>
+            <span href="javascript:;" class="mdui-typo-headline">Scratch-Desktop 镜像计划</span>
+            <span href="javascript:;" class="mdui-typo-subheading-opacity"><a
+                    href="https://github.com/waterblock79/asdm/" class="mdui-text-color-blue"
+                    style="text-decoration: none;">Waterblock79 /
+                    asdm</a></span>
+        </div>
+    </div>
 
-    <p class="about font-mono">  为方便广大吧友与社会各界 Scratch 爱好者，我们使用 <a
+    <div class="mdui-m-x-5 mdui-m-t-3 mdui-typo">
+        为方便广大吧友与社会各界 Scratch 爱好者，我们使用 <a
             href="https://hub.fastgit.org/waterblock79/asdm/actions/workflows/main.yml">Github Action</a> (
         从官方渠道将下载文件储存到 Github Release )、<a href="https://fastgit.org/">FastGit</a> ( 让用户更快速的从 Github 下载
-        )，自动的每周从官网镜像 Scratch 的离线版安装包。</p>
+        )、<a href="https://mdui.org/">MDUI</a> ( 构建更美观的页面 ) ，自动的每周从官网镜像 Scratch 的离线版安装包。
+        <br /><br />
+        <ref id="dlabout" class="mdui-typo-body-1-opacity"></ref><br /><br />
 
-    <div class="download">
-        <ref id="dlabout" class="font-mono"></ref><br />
-
-        <div class="win-logo" style="margin-right:0.5em"></div><a href="" id="windl"></a><br />
-        <div class="mac-logo" style="margin-right:0.5em"></div><a href="" id="macdl"></a><br /><br />
+        <a href="" id="windl"><i class="mdui-icon material-icons mdui-m-r-1 mdui-m-y-1"
+                style="user-select: none">desktop_windows</i></a>
+        <br />
+        <a href="" id="macdl"><i class="mdui-icon material-icons mdui-m-r-1 mdui-m-y-1"
+                style="user-select: none">desktop_mac</i></a>
+        <br /><br />
 
         或者直接 <a href="https://hub.fastgit.org/waterblock79/asdm/releases/latest" class="font-mono">前往 Github
             Releases</a> 下载
         <span class="showresabout"
             title="文件在 Assets 下，Windows 用户请点击 scratch-win.exe，MacOS 用户请点击 scratch-mac.dmg！"></span><br />
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/js/mdui.min.js"
+        integrity="sha384-gCMZcshYKOGRX9r6wbDrvF+TcCCswSHFucUzUPwka+Gr+uHgjlYvkABr95TCOz3A"
+        crossorigin="anonymous"></script>
     <script>
         const f = {
             $: (e) => { return document.querySelector(e) }
         };
         const xmlhttp = new XMLHttpRequest();
-        xmlhttp.open('GET', 'https://api.github.com/repos/waterblock79/asdm/releases', true);
+        xmlhttp.open('GET', 'https://api.github.com/repos/waterblock79/asdm/releases', false);
         xmlhttp.send();
-        xmlhttp.onreadystatechange = function () {
-            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                let res = JSON.parse(xmlhttp.responseText);
-                f.$('#dlabout').innerHTML = `该版本镜像于 ${new Date(res[0]['published_at']).toLocaleString()} \n `;
-                // Windows
-                let winInfo = res[0]['assets'].filter((x) => { return x['name'].search("win") != -1 })[0];
-                f.$('#windl').href = winInfo['browser_download_url'].replace("github.com", "hub.fastgit.org");
-                f.$('#windl').innerHTML = "Windows 版本的 Scratch 离线版程序";
-                // Mac OS
-                let macInfo = res[0]['assets'].filter((x) => { return x['name'].search("mac") != -1 })[0];
-                f.$('#macdl').href = macInfo['browser_download_url'].replace("github.com", "hub.fastgit.org");
-                f.$('#macdl').innerHTML = "MacOS 版本的 Scratch 离线版程序";
-            }
-        }
+        let res = JSON.parse(xmlhttp.responseText);
+        xmlhttp.open('GET', 'https://api.github.com/repos/waterblock79/asdm/contents/scratch-version', false)
+        xmlhttp.send();
+        let scver = window.atob(JSON.parse(xmlhttp.responseText)['content']);
+        f.$('#dlabout').innerHTML = `该版本镜像于 ${new Date(res[0]['published_at']).toLocaleString()} ，当前的 Scratch 版本为 ${scver} 。\n `;
+        // Windows
+        let winInfo = res[0]['assets'].filter((x) => { return x['name'].search("win") != -1 })[0];
+        f.$('#windl').href = winInfo['browser_download_url'].replace("github.com", "hub.fastgit.org");
+        f.$('#windl').innerHTML += "Windows 版本的 Scratch 离线版程序";
+        // Mac OS
+        let macInfo = res[0]['assets'].filter((x) => { return x['name'].search("mac") != -1 })[0];
+        f.$('#macdl').href = macInfo['browser_download_url'].replace("github.com", "hub.fastgit.org");
+        f.$('#macdl').innerHTML += "MacOS 版本的 Scratch 离线版程序";
+        mdui.snackbar(`成功获取镜像下载地址，当前请求次数剩余 ${xmlhttp.getResponseHeader("x-ratelimit-remaining")} 次`);
     </script>
 </body>
 
