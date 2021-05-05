@@ -23,12 +23,14 @@ jobs:
       run: pip install requests
  
     - name: Download
-      run: python dl.py
-        
+      run: |
+        python dl.py
+        export scratchversion=$"cat scratch-version"
+      
     - name: Releases mirror
       uses: ncipollo/release-action@v1
       with:
         artifacts: "output/scratch-win.exe,output/scratch-mac.dmg"
         token: ${{ secrets.PUBLISH }}
-        body: " THIS IS AN MIRROR, FOR OFFICAL RELEASES, PLEASE GO HTTPS://SCRATCH.MIT.EDU/DOWNLOAD "
+        body: "{ 'README o('v')┛ ' : ' THIS IS AN MIRROR, FOR OFFICAL RELEASES, PLEASE GO HTTPS://SCRATCH.MIT.EDU/DOWNLOAD .', 'version' : ' $scratchversion ' }"
         tag: ${{ github.run_id }}
