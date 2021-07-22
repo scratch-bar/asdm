@@ -8,11 +8,16 @@
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />
 
-<body style="font-weight: 300;">
-    <div class="mdui-appbar mdui-shadow-6 mdui-hoverable">
+<body {
+  font-family: SimHei, sans-serif, Helvetica;
+}>
+  
+  </body>
+      
+  <div class="mdui-appbar mdui-shadow-3 mdui-hoverable">
         <div class="mdui-toolbar mdui-color-theme">
-            <i class="mdui-icon material-icons mdui-m-l-3" style="user-select: none">cloud_download</i>
-            <span href="javascript:;" class="mdui-typo-headline">Scratch-Desktop 镜像计划</span>
+            <i class="mdui-icon material-icons mdui-m-l-4" style="user-select: none">cloud_download</i>
+            <span href="javascript:;" class="mdui-typo-headline"><b>A</b>uto <b>S</b>cratch <b>D</b>esktop <b>M</b>irror - Scratch 离线版镜像计划</span>
             <span href="javascript:;" class="mdui-typo-subheading-opacity"><a
                     href="https://github.com/waterblock79/asdm/" class="mdui-text-color-blue"
                     style="text-decoration: none;">Scratch-Bar /
@@ -20,11 +25,10 @@
         </div>
     </div>
 
+  <h1></h1>
     <div class="mdui-m-x-5 mdui-m-t-3 mdui-typo">
         为方便广大吧友与社会各界 Scratch 爱好者，我们使用 <a
-            href="https://hub.fastgit.org/waterblock79/asdm/actions/workflows/main.yml">Github Action</a> (
-        从官方渠道将下载文件储存到 Github Release )、<a href="https://fastgit.org/">FastGit</a> ( 让用户更快速的从 Github 下载
-        )、<a href="https://mdui.org/">MDUI</a> ( 构建更美观的页面 ) ，自动的每周从官网镜像 Scratch 的离线版安装包。
+            href="https://hub.fastgit.org/waterblock79/asdm/actions/workflows/main.yml" mdui-tooltip="{content: '从官方渠道将下载文件储存到 Github Release'}">Github Action</a> 及 <a href="https://fastgit.org/" mdui-tooltip="{content: ' 让用户更快速的从 Github 下载'}">FastGit</a> ，每周自动的从官网镜像 Scratch 的离线版安装包。为了界面美观性，我们使用<a href="https://mdui.org/" mdui-tooltip="{content: '真香'}">MDUI</a>构建更美观的页面。
         <br /><br />
         <ref id="dlabout" class="mdui-typo-body-1-opacity"></ref><br /><br />
 
@@ -66,6 +70,3 @@
         f.$('#macdl').innerHTML += "MacOS 版本的 Scratch 离线版程序";
         mdui.snackbar(`成功获取镜像下载地址，当前请求次数剩余 ${xmlhttp.getResponseHeader("x-ratelimit-remaining")} 次`);
     </script>
-</body>
-
-</html>
