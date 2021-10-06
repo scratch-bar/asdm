@@ -14,7 +14,7 @@
             <i class="mdui-icon material-icons mdui-m-l-3" style="user-select: none">cloud_download</i>
             <span href="javascript:;" class="mdui-typo-headline">Scratch-Desktop 镜像计划</span>
             <span href="javascript:;" class="mdui-typo-subheading-opacity"><a
-                    href="https://github.com/waterblock79/asdm/" class="mdui-text-color-blue"
+                    href="https://github.com/scratch-bar/asdm/" class="mdui-text-color-blue"
                     style="text-decoration: none;">Scratch-Bar /
                     asdm</a></span>
         </div>
@@ -22,12 +22,33 @@
 
     <div class="mdui-m-x-5 mdui-m-t-3 mdui-typo">
         为方便广大吧友与社会各界 Scratch 爱好者，我们使用 <a
-            href="https://hub.fastgit.org/waterblock79/asdm/actions/workflows/main.yml">Github Action</a> (
+            href="https://hub.fastgit.org/scratch-bar/asdm/actions/workflows/main.yml">Github Action</a> (
         从官方渠道将下载文件储存到 Github Release )、<a href="https://fastgit.org/">FastGit</a> ( 让用户更快速的从 Github 下载
         )、<a href="https://mdui.org/">MDUI</a> ( 构建更美观的页面 ) ，自动的每周从官网镜像 Scratch 的离线版安装包。
         <br /><br />
         <ref id="dlabout" class="mdui-typo-body-1-opacity"></ref><br /><br />
-
+        
+        <a href="http://wbmirror.luogu.ml/ScratchInstaller1.4.exe" id="w1_4dl"><i class="mdui-icon material-icons mdui-m-r-1 mdui-m-y-1"
+                style="user-select: none">Windows 版本的 Scratch 1.4 离线版程序</i></a>
+        <br />
+        <a href="http://wbmirror.luogu.ml/MacScratch1.4.dmg" id="m1_4dl"><i class="mdui-icon material-icons mdui-m-r-1 mdui-m-y-1"
+                style="user-select: none">MacOS 版本的 Scratch 1.4 离线版程序</i></a>
+        <br />
+        <a href="https://airsdk.harman.com/assets/downloads/AdobeAIR.exe" id="wairdl"><i class="mdui-icon material-icons mdui-m-r-1 mdui-m-y-1"
+                style="user-select: none">Windows 版本的 HARMAN Adobe AIR Runtime程序</i></a>
+        <br />
+        <a href="https://airsdk.harman.com/assets/downloads/AdobeAIR.dmg" id="mairdl"><i class="mdui-icon material-icons mdui-m-r-1 mdui-m-y-1"
+                style="user-select: none">MacOS 版本的 HARMAN Adobe AIR Runtime程序</i></a>
+        <br />
+        <a href="http://wbmirror.luogu.ml/scratch2download/sa/Scratch-461.exe" id="w2_0dl"><i class="mdui-icon material-icons mdui-m-r-1 mdui-m-y-1"
+                style="user-select: none">Windows 版本的 Scratch 2.0 离线版程序</i></a>
+        <br />
+        <a href="http://wbmirror.luogu.ml/scratch2download/sa/Scratch-461.air" id="m1052_0dl"><i class="mdui-icon material-icons mdui-m-r-1 mdui-m-y-1"
+                style="user-select: none">MacOS 10.5 以下版本的 Scratch 2.0 离线版程序</i></a>
+        <br />
+        <a href="http://wbmirror.luogu.ml/scratch2download/sa/Scratch-461.dmg" id="m2_0dl"><i class="mdui-icon material-icons mdui-m-r-1 mdui-m-y-1"
+                style="user-select: none">MacOS 10.5 以上版本的 Scratch 2.0 离线版程序</i></a>
+        <br />
         <a href="" id="windl"><i class="mdui-icon material-icons mdui-m-r-1 mdui-m-y-1"
                 style="user-select: none">desktop_windows</i></a>
         <br />
@@ -35,7 +56,7 @@
                 style="user-select: none">desktop_mac</i></a>
         <br /><br />
 
-        或者直接 <a href="https://hub.fastgit.org/waterblock79/asdm/releases/latest" class="font-mono">前往 Github
+        或者直接 <a href="https://hub.fastgit.org/scratch-bar/asdm/releases/latest" class="font-mono">前往 Github
             Releases</a> 下载
         <span class="showresabout"
             title="文件在 Assets 下，Windows 用户请点击 scratch-win.exe，MacOS 用户请点击 scratch-mac.dmg！"></span><br />
@@ -49,21 +70,21 @@
             $: (e) => { return document.querySelector(e) }
         };
         const xmlhttp = new XMLHttpRequest();
-        xmlhttp.open('GET', 'https://api.github.com/repos/waterblock79/asdm/releases', false);
+        xmlhttp.open('GET', 'https://api.github.com/repos/scratch-bar/asdm/releases', false);
         xmlhttp.send();
         let res = JSON.parse(xmlhttp.responseText);
-        xmlhttp.open('GET', 'https://api.github.com/repos/waterblock79/asdm/contents/scratch-version', false)
+        xmlhttp.open('GET', 'https://api.github.com/repos/scratch-bar/asdm/contents/scratch-version', false)
         xmlhttp.send();
         let scver = window.atob(JSON.parse(xmlhttp.responseText)['content']);
-        f.$('#dlabout').innerHTML = `该版本镜像于 ${new Date(res[0]['published_at']).toLocaleString()} ，当前的 Scratch 版本为 ${scver} 。\n `;
+        f.$('#dlabout').innerHTML = `最后一次镜像于 ${new Date(res[0]['published_at']).toLocaleString()} ，当前的 Scratch 版本为 ${scver} 。\n `;
         // Windows
         let winInfo = res[0]['assets'].filter((x) => { return x['name'].search("win") != -1 })[0];
         f.$('#windl').href = winInfo['browser_download_url'].replace("github.com", "hub.fastgit.org");
-        f.$('#windl').innerHTML += "Windows 版本的 Scratch 离线版程序";
+        f.$('#windl').innerHTML += "Windows 版本的 Scratch 3 离线版程序";
         // Mac OS
         let macInfo = res[0]['assets'].filter((x) => { return x['name'].search("mac") != -1 })[0];
         f.$('#macdl').href = macInfo['browser_download_url'].replace("github.com", "hub.fastgit.org");
-        f.$('#macdl').innerHTML += "MacOS 版本的 Scratch 离线版程序";
+        f.$('#macdl').innerHTML += "MacOS 版本的 Scratch 3 离线版程序";
         mdui.snackbar(`成功获取镜像下载地址，当前请求次数剩余 ${xmlhttp.getResponseHeader("x-ratelimit-remaining")} 次`);
     </script>
 </body>
