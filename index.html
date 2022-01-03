@@ -1,9 +1,8 @@
+<!DOCTYPE html>
 <html>
 
 <head>
     <title>Auto Scratch Desktop Mirror</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/css/mdui.min.css"
-        integrity="sha384-cLRrMq39HOZdvE0j6yBojO4+1PrHfB7a9l5qLcmRm/fiWXYY+CndJPmyu5FV/9Tw" crossorigin="anonymous" />
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />
@@ -15,65 +14,122 @@
         gtag('js', new Date());
         gtag('config', 'G-FD23CNKF3B');
     </script>
-    
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+</head>
 
-<body style="font-weight: 300;">
-    <div class="mdui-appbar mdui-shadow-6 mdui-hoverable">
-        <div class="mdui-toolbar mdui-color-theme">
-            <i class="mdui-icon material-icons mdui-m-l-3" style="user-select: none">cloud_download</i>
-            <span href="javascript:;" class="mdui-typo-headline">Scratch-Desktop 镜像计划</span>
-            <span href="javascript:;" class="mdui-typo-subheading-opacity"><a
-                    href="https://github.com/waterblock79/asdm/" class="mdui-text-color-blue"
-                    style="text-decoration: none;">Scratch-Bar /
-                    asdm</a></span>
-        </div>
+<body>
+    <div id="app">
+        <v-app>
+            <v-main>
+                <v-toolbar elevation="4">
+                    <v-app-bar-nav-icon>
+                        <v-icon>mdi-download-box-outline</v-icon>
+                    </v-app-bar-nav-icon>
+                    <v-toolbar-title>Auto Scratch-Desktop Mirror</v-toolbar-title>
+                </v-toolbar>
+                <v-container class="d-flex mt-5">
+                    <v-row class="mx-5">
+                        <v-col>
+                            <div class="text-body-1">
+                                Auto Scratch-Desktop Mirror 是一个基于 Github Workflow 的开源镜像项目，
+                                它会每周自动从 Scratch 官方网站下载最新的 Scratch3.0 安装包并上传至 (Github)
+                                Release 提供给用户以供下载。
+                                <p class="font-weight-light mt-2 text-caption">
+                                    项目开源于 <a href="https://github.com/scratch-bar/asdm">Github</a>，本版本由 waterblock79 开发。
+                                    <br />
+                                    感谢: Scratch Team, Github, Vue.js, Vuetify.js, Cnpmjs, FastGit 以及所有为这个项目添砖加瓦的人们!
+                                    <br />
+                                    友情链接: <a href="https://scratch.cf/">Mirror Scratch</a>
+                                </p>
+                            </div>
+                        </v-col>
+                        <v-col>
+                            <v-card elevation="2">
+                                <v-card-title>下载 Scratch 3.0</v-card-title>
+                                <v-card-text>
+                                    未正确加载下载地址？请前往
+                                    <a href="https://hub.fastgit.org/waterblock79/asdm/releases/latest">Fastgit 镜像</a>
+                                    或
+                                    <a href="https://github.com.cnpmjs.org/waterblock79/asdm/releases/latest">Cnpm
+                                        镜像站点</a>
+                                    下载。
+                                    <br />
+                                    同时，您也可以尝试 <a href="https://llk.github.io/scratch-gui/develop/">在线版本的 Scratch 3.0</a>
+                                    。
+                                    <br />
+                                    该版本镜像于 {{ release.date }}，Scratch 版本为 {{ release.scratch_version }}。
+                                </v-card-text>
+                                <v-card-actions>
+                                    <v-btn color="primary" v-bind:disabled="release.stat == 0" v-bind:href="`https://${download_source}${release.url.windows}`" text>
+                                        <v-icon right>mdi-microsoft-windows</v-icon>
+                                        Windows 下载
+                                    </v-btn>
+                                    <v-btn color="primary" v-bind:disabled="release.stat == 0" v-bind:href="`https://${download_source}${release.url.macos}`" text>
+                                        <v-icon right>mdi-apple</v-icon>
+                                        MacOS 下载
+                                    </v-btn>
+                            </v-card>
+                            <v-card elevation="2" class="mt-10">
+                                <v-card-title>设置下载源</v-card-title>
+                                <v-card-text>
+                                    通常情况下您<b>不需要更改下载源</b>，但如果默认下载源不可用，您可以更改为另外一个。
+                                    <v-select v-model="download_source" :items="['hub.fastgit.org','github.com.cnpmjs.org','github.com']" label="" dense></v-select>
+                                </v-card-text>
+                            </v-card>
+                        </v-col>
+                    </v-row>
+                </v-container>
+    </div>
+    </div>
+    </v-main>
+    </v-app>
     </div>
 
-    <div class="mdui-m-x-5 mdui-m-t-3 mdui-typo">
-        为方便广大吧友与社会各界 Scratch 爱好者，我们使用 <a
-            href="https://hub.fastgit.org/waterblock79/asdm/actions/workflows/main.yml">Github Action</a> (
-        从官方渠道将下载文件储存到 Github Release )、<a href="https://fastgit.org/">FastGit</a> ( 让用户更快速的从 Github 下载
-        )、<a href="https://mdui.org/">MDUI</a> ( 构建更美观的页面 ) ，自动的每周从官网镜像 Scratch 的离线版安装包。
-        <br /><br />
-        <ref id="dlabout" class="mdui-typo-body-1-opacity"></ref><br /><br />
-
-        <a href="" id="windl"><i class="mdui-icon material-icons mdui-m-r-1 mdui-m-y-1"
-                style="user-select: none">desktop_windows</i></a>
-        <br />
-        <a href="" id="macdl"><i class="mdui-icon material-icons mdui-m-r-1 mdui-m-y-1"
-                style="user-select: none">desktop_mac</i></a>
-        <br /><br />
-
-        或者直接 <a href="https://hub.fastgit.org/waterblock79/asdm/releases/latest" class="font-mono">前往 Github
-            Releases</a> 下载
-        <span class="showresabout"
-            title="文件在 Assets 下，Windows 用户请点击 scratch-win.exe，MacOS 用户请点击 scratch-mac.dmg！"></span><br />
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/js/mdui.min.js"
-        integrity="sha384-gCMZcshYKOGRX9r6wbDrvF+TcCCswSHFucUzUPwka+Gr+uHgjlYvkABr95TCOz3A"
-        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
-        const f = {
-            $: (e) => { return document.querySelector(e) }
-        };
-        const xmlhttp = new XMLHttpRequest();
-        xmlhttp.open('GET', 'https://api.github.com/repos/waterblock79/asdm/releases', false);
-        xmlhttp.send();
-        let res = JSON.parse(xmlhttp.responseText);
-        xmlhttp.open('GET', 'https://api.github.com/repos/waterblock79/asdm/contents/scratch-version', false)
-        xmlhttp.send();
-        let scver = window.atob(JSON.parse(xmlhttp.responseText)['content']);
-        f.$('#dlabout').innerHTML = `该版本镜像于 ${new Date(res[0]['published_at']).toLocaleString()} ，当前的 Scratch 版本为 ${scver} 。\n `;
-        // Windows
-        let winInfo = res[0]['assets'].filter((x) => { return x['name'].search("win") != -1 })[0];
-        f.$('#windl').href = winInfo['browser_download_url'].replace("github.com", "hub.fastgit.org");
-        f.$('#windl').innerHTML += "Windows 版本的 Scratch 离线版程序";
-        // Mac OS
-        let macInfo = res[0]['assets'].filter((x) => { return x['name'].search("mac") != -1 })[0];
-        f.$('#macdl').href = macInfo['browser_download_url'].replace("github.com", "hub.fastgit.org");
-        f.$('#macdl').innerHTML += "MacOS 版本的 Scratch 离线版程序";
-        mdui.snackbar(`成功获取镜像下载地址，当前请求次数剩余 ${xmlhttp.getResponseHeader("x-ratelimit-remaining")} 次`);
+        new Vue({
+            el: '#app',
+            vuetify: new Vuetify(),
+            data: {
+                release: {
+                    stat: 0, // 0 => 加载中，1 => 加载成功，其他 => 加载失败:错误信息
+                    url: {
+                        windows: '',
+                        macos: ''
+                    },
+                    date: '一周以内',
+                    scratch_version: 'Unknown'
+                },
+                download_source: 'github.com.cnpmjs.org',
+            },
+            created: function () {
+                this.release.stat = 0
+                axios.get('https://api.github.com/repos/waterblock79/asdm/releases/latest')
+                    .then(res => {
+                        this.release.stat = 1
+                        this.release.url.windows = res.data.assets.
+                            filter((element) => { return (element['name'] == "scratch-win.exe") })[0]
+                            .browser_download_url
+                            .replace('https://github.com', '')
+                        this.release.url.macos = res.data.assets.
+                            filter((element) => { return (element['name'] == "scratch-mac.dmg") })[0]
+                            .browser_download_url
+                            .replace('https://github.com', '')
+                        this.release.date = new Date(res.data.published_at).toLocaleString()
+                        this.release.scratch_version = JSON.parse(res.data.body).scratch_version
+                    })
+                    .catch(err => {
+                        this.release.stat = err.response.status
+                    })
+            },
+            methods: {
+            }
+        })
     </script>
 </body>
 
