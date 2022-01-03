@@ -10,7 +10,7 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-FD23CNKF3B"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+        function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
         gtag('config', 'G-FD23CNKF3B');
     </script>
@@ -58,25 +58,36 @@
                                     下载。
                                     <br />
                                     同时，您也可以尝试 <a href="https://llk.github.io/scratch-gui/develop/">在线版本的 Scratch 3.0</a>
-                                    。
+                                    ，或在应用商店中下载 <a
+                                        href="https://apps.apple.com/cn/app/scratch-desktop/id1446785996?mt=12">Mac OS
+                                        版本</a> 和 <a
+                                        href="https://www.microsoft.com/zh-cn/p/scratch-3/9pfgj25jl6x3">Windows 10
+                                        以上版本</a> 的 Scratch 桌面版。
                                     <br />
-                                    该版本镜像于 {{ release.date }}，Scratch 版本为 {{ release.scratch_version }}。
+                                    <p class="mt-2 font-weight-bold">
+                                        该版本镜像于 {{ release.date }}，Scratch 版本为 {{ release.scratch_version }}。
+                                    </p>
+
                                 </v-card-text>
                                 <v-card-actions>
-                                    <v-btn color="primary" v-bind:disabled="release.stat == 0" v-bind:href="`https://${download_source}${release.url.windows}`" text>
+                                    <v-btn color="primary" v-bind:disabled="release.stat == 0"
+                                        v-bind:href="`https://${download_source}${release.url.windows}`" text>
                                         <v-icon right>mdi-microsoft-windows</v-icon>
                                         Windows 下载
                                     </v-btn>
-                                    <v-btn color="primary" v-bind:disabled="release.stat == 0" v-bind:href="`https://${download_source}${release.url.macos}`" text>
+                                    <v-btn color="primary" v-bind:disabled="release.stat == 0"
+                                        v-bind:href="`https://${download_source}${release.url.macos}`" text>
                                         <v-icon right>mdi-apple</v-icon>
                                         MacOS 下载
                                     </v-btn>
                             </v-card>
-                            <v-card elevation="2" class="mt-10">
+                            <v-card elevation="2" class="mt-7">
                                 <v-card-title>设置下载源</v-card-title>
                                 <v-card-text>
                                     通常情况下您<b>不需要更改下载源</b>，但如果默认下载源不可用，您可以更改为另外一个。
-                                    <v-select v-model="download_source" :items="['hub.fastgit.org','github.com.cnpmjs.org','github.com']" label="" dense></v-select>
+                                    <v-select v-model="download_source"
+                                        :items="['hub.fastgit.org','github.com.cnpmjs.org','github.com']" label=""
+                                        dense></v-select>
                                 </v-card-text>
                             </v-card>
                         </v-col>
