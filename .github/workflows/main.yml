@@ -29,10 +29,10 @@ jobs:
     - name: Releases mirror
       uses: ncipollo/release-action@v1
       with:
-        artifacts: "output/scratch-win.exe,output/scratch-mac.dmg,scratch-version"
+        artifacts: "output/scratch-win.exe,output/scratch-mac.dmg"
         token: ${{ secrets.PUBLISH }}
         body: |
-          { "describe_zh" : 这些文件属于 scratch.mit.edu/download 而不属于 ASDM，ASDM 所做的只是镜像这些文件。",
+          { "describe_zh" : "这些文件属于 scratch.mit.edu/download 而不属于 ASDM，ASDM 所做的只是镜像这些文件。",
             "describe_en" : "( These files are from scratch.mit.edu/download and not belongs to asdm, asdm to do are just mirror these files. )",
             "scratch_version": "${{ env.scratch_version }}" }
         
