@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />
+    <link rel="shortcut icon" href="//www.google.com/s2/favicons?sz=64&domain=scratch.mit.edu">
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-FD23CNKF3B"></script>
     <script>
@@ -85,11 +86,9 @@
                                 <v-card-title>设置下载源</v-card-title>
                                 <v-card-text>
                                     通常情况下您<b>不需要更改下载源</b>，但如果默认下载源不可用，您可以更改为另外一个，或者自定义下载源。
-                                    <v-select v-model="download_source"
-                                        :items="['hub.fastgit.xyz','github.com.cnpmjs.org','github.com']" label=""
-                                        dense v-bind:disabled="toggle_button_text == '选择下载源'"></v-select>
-                                    <v-btn color="primary" text v-on:click="toggle_custom_source">{{ toggle_button_text }}</v-btn>
-                                    <v-text-field label="自定义下载源" v-bind:disabled="toggle_button_text != '选择下载源'" v-model="download_source"></v-text-field>
+                                    <v-combobox v-model="download_source"
+                                        :items="['hub.fastgit.xyz','github.com']" label=""
+                                        dense></v-combobox>
                                 </v-card-text>
                             </v-card>
                         </v-col>
@@ -119,7 +118,6 @@
                     scratch_version: '未知'
                 },
                 download_source: 'hub.fastgit.xyz',
-                toggle_button_text: '自定义下载源',
             },
             created: function () {
                 this.release.stat = 0
