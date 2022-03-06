@@ -34,13 +34,13 @@
                     <v-row class="mx-5">
                         <v-col>
                             <div class="text-body-1">
-                                Auto Scratch-Desktop Mirror 是一个基于 Github Workflow 的开源镜像项目，
-                                它会每周自动从 Scratch 官方网站下载最新的 Scratch3.0 安装包并上传至 (Github)
+                                Auto Scratch-Desktop Mirror 是一个基于 GitHub Workflow 的开源镜像项目，
+                                它会每周自动从 Scratch 官方网站下载最新的 Scratch 3.0 安装包并上传至 (GitHub)
                                 Release 提供给用户以供下载。
                                 <p class="font-weight-light mt-2 text-caption">
-                                    项目开源于 <a href="https://github.com/scratch-bar/asdm">Github</a>，本版本由 waterblock79 开发。
+                                    项目开源于 <a href="https://github.com/scratch-bar/asdm">GitHub</a>，本版本由 waterblock79 开发。
                                     <br />
-                                    感谢: Scratch Team, Github, Vue.js, Vuetify.js, Cnpmjs, FastGit 以及所有为这个项目添砖加瓦的人们!
+                                    感谢: Scratch Team, GitHub, Vue.js, Vuetify.js, Cnpmjs, FastGit 以及所有为这个项目添砖加瓦的人们!
                                     <br />
                                     友情链接: <a href="https://scratch.cf/">Mirror Scratch</a>
                                 </p>
@@ -51,7 +51,7 @@
                                 <v-card-title>下载 Scratch 3.0</v-card-title>
                                 <v-card-text>
                                     未正确加载下载地址？请前往
-                                    <a href="https://hub.fastgit.org/waterblock79/asdm/releases/latest">Fastgit 镜像</a>
+                                    <a href="https://hub.fastgit.xyz/waterblock79/asdm/releases/latest">FastGit 镜像</a>
                                     或
                                     <a href="https://github.com.cnpmjs.org/waterblock79/asdm/releases/latest">Cnpm
                                         镜像站点</a>
@@ -84,10 +84,12 @@
                             <v-card elevation="2" class="mt-7">
                                 <v-card-title>设置下载源</v-card-title>
                                 <v-card-text>
-                                    通常情况下您<b>不需要更改下载源</b>，但如果默认下载源不可用，您可以更改为另外一个。
+                                    通常情况下您<b>不需要更改下载源</b>，但如果默认下载源不可用，您可以更改为另外一个，或者自定义下载源。
                                     <v-select v-model="download_source"
-                                        :items="['hub.fastgit.org','github.com.cnpmjs.org','github.com']" label=""
-                                        dense></v-select>
+                                        :items="['hub.fastgit.xyz','github.com.cnpmjs.org','github.com']" label=""
+                                        dense v-bind:disabled="toggle_button_text == '选择下载源'"></v-select>
+                                    <v-btn color="primary" text v-on:click="toggle_custom_source">{{ toggle_button_text }}</v-btn>
+                                    <v-text-field label="自定义下载源" v-bind:disabled="toggle_button_text != '选择下载源'" v-model="download_source"></v-text-field>
                                 </v-card-text>
                             </v-card>
                         </v-col>
@@ -114,9 +116,10 @@
                         macos: ''
                     },
                     date: '一周以内',
-                    scratch_version: 'Unknown'
+                    scratch_version: '未知'
                 },
-                download_source: 'github.com.cnpmjs.org',
+                download_source: 'hub.fastgit.xyz',
+                toggle_button_text: '自定义下载源',
             },
             created: function () {
                 this.release.stat = 0
@@ -139,6 +142,10 @@
                     })
             },
             methods: {
+                toggle_custom_source: function() {
+                    this.toggle_button_text = this.toggle_button_text == "自定义下载源" ? "选择下载源" : "自定义下载源"
+                    if (this.toggle_button_text == "自定义下载源") { this.download_source = "hub.fastgit.xyz" }
+                }
             }
         })
     </script>
