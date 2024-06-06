@@ -32,7 +32,7 @@ results.forEach(t => {
          response.data.on('data', (chunk) => {
             fs.appendFileSync(`output/${t.fileName}.${partCount}`, chunk);
             byteCount += chunk.byteLength;
-            if (byteCount > 32 * 1024 * 1024) {
+            if (byteCount > 16 * 1024 * 1024) {
                partCount++;
                byteSum += byteCount;
                byteCount = 0;
