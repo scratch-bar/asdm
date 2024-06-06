@@ -1,3 +1,5 @@
-# Auto Scratch Desktop Mirror  
-Auto Scratch-Desktop Mirror 是一个基于 Github Workflow 的开源镜像项目，它会每周自动从 Scratch 官方网站下载最新的 Scratch 3.0 安装包并上传至 Github Release 提供给用户以供下载。  
-感谢: Scratch Team, Github, Vue.js, Vuetify.js, FastGit 以及所有为这个项目添砖加瓦的人们!  
+# Auto Scratch Desktop Mirror NEXT
+
+Auto Scratch Desktop Mirror 是一个 Scratch 桌面版的开源下载镜像项目。我们通过 Github Workflow 自动下载 Scratch 官网的 Scratch 桌面版程序，并透过 CDN 或 Github Pages 提供，以方便中国大陆地区的用户下载。
+
+感谢: Scratch Team, Github, Vue.js, Vuetify.js, jsDeliver 以及所有为这个项目添砖加瓦的人们！
