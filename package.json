@@ -1,0 +1,9 @@
+{
+  "name": "asdm",
+  "repository": "https://github.com/scratch-bar/asdm.git",
+  "author": "waterblock79",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.7.2"
+  }
+}

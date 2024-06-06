@@ -1,9 +1,12 @@
-name: Mirror and push
+name: Download then push
 
 on: 
   workflow_dispatch:
   schedule:
-    - cron:  '45 11 * * 3'
+    - cron:  '00 12 * * 3'
+
+permissions:
+  contents: write
 
 jobs:
   build:
@@ -11,29 +14,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: checkout actions
-      uses: actions/checkout@v1
+    - uses: actions/checkout@v1
 
-    - name: Set up Python 3.7
-      uses: actions/setup-python@v1
+    - uses: actions/setup-node@v4
       with:
-        python-version: 3.7
-     
-    - name: Install requests
-      run: pip install requests
+        node-version: 18
  
-    - name: Download
-      run: |
-        python download.py
+    - run: |
+        npm install
+        node down.js
+        git config --local user.email "github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+        git add *
+        git commit -a -m "Automatic commit"
       
-    - name: Releases mirror
-      uses: ncipollo/release-action@v1
-      with:
-        artifacts: "output/scratch-win.exe,output/scratch-mac.dmg"
-        token: ${{ secrets.PUBLISH }}
-        body: |
-          { "describe_zh" : "这些文件属于 scratch.mit.edu/download 而不属于 ASDM，ASDM 所做的只是镜像这些文件。",
-            "describe_en" : "( These files are from scratch.mit.edu/download and not belongs to asdm, asdm to do are just mirror these files. )",
-            "scratch_version": "${{ env.scratch_version }}" }
-        
-        tag: ${{ github.run_id }}
+    - uses: ad-m/github-push-action@master
