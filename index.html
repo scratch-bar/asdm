@@ -157,7 +157,7 @@
                source: {
                   handler() {
                      axios
-                        .get(`${this.source}/output/data.json`)
+                        .get(`${this.source}output/data.json`)
                         .then((res) => {
                            this.data = res.data;
                         });
