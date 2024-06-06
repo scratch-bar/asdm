@@ -25,7 +25,7 @@ jobs:
         node down.js
         git config --local user.email "github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
-        git add *
+        git add ./output
         git commit -a -m "Automatic commit"
       
     - uses: ad-m/github-push-action@master
