@@ -50,7 +50,9 @@
                   <v-app-bar-nav-icon>
                      <v-icon>mdi-download-box-outline</v-icon>
                   </v-app-bar-nav-icon>
-                  <v-toolbar-title>Auto Scratch-Desktop Mirror NEXT</v-toolbar-title>
+                  <v-toolbar-title
+                     >Auto Scratch-Desktop Mirror NEXT</v-toolbar-title
+                  >
                </v-toolbar>
                <v-container class="d-flex mt-5">
                   <v-row class="mx-5">
@@ -93,7 +95,10 @@
                               >
                               的 Scratch 桌面版。
                               <br />
-                              <b v-if="data.length">最后镜像于 {{ new Date(data[0].time).toLocaleDateString() }}。</b>
+                              <b v-if="data.length"
+                                 >最后镜像于 {{ new
+                                 Date(data[0].time).toLocaleDateString() }}。</b
+                              >
                            </v-card-text>
                            <v-card-actions>
                               <v-btn
@@ -101,11 +106,16 @@
                                  v-for="download in data"
                                  @click="downloadItem(download)"
                                  text
+                                 :disabled="!!currentDownload"
                               >
                                  <v-icon size="16">{{download.icon}}</v-icon>
                                  {{download.description}}
                               </v-btn>
                            </v-card-actions>
+                           <small class="ml-4 blue-grey--text" v-if="currentDownload"
+                              >{{ (currentDownload?.size * progress / 100
+                              / 1024 / 1024).toFixed(1) }} MB 已下载</small
+                           >
                            <v-progress-linear
                               :value="progress"
                               v-if="currentDownload"
@@ -117,7 +127,7 @@
                               通常情况下您<b>不需要更改下载源</b>，但如果默认下载源不可用，您可以更改为另外一个，或者自定义下载源。
                               <v-combobox
                                  v-model="source"
-                                 :items="['', 'https://cdn.jsdelivr.net/gh/scratch-bar/asdm/']"
+                                 :items="['', 'https://scratch-bar.github.io/asdm/', 'https://cdn.jsdelivr.net/gh/scratch-bar/asdm/']"
                                  dense
                               ></v-combobox>
                            </v-card-text>
@@ -143,13 +153,19 @@
                chunkLoaded: [],
                progress: 0,
             },
-            created: function () {
-               axios.get("./output/data.json").then((res) => {
-                  this.data = res.data;
-               });
+            watch: {
+               source: {
+                  handler() {
+                     axios
+                        .get(`${this.source}/output/data.json`)
+                        .then((res) => {
+                           this.data = res.data;
+                        });
+                  },
+               },
             },
             methods: {
-                computeProgress() {
+               computeProgress() {
                   if (this.currentDownload) {
                      let sum = 0;
                      this.chunkLoaded.forEach((c) => {
@@ -196,9 +212,9 @@
                               this.currentDownload = null;
                            }
                         })
-                        .catch( e => {
-                            alert('我们遇到了一个错误：\n' + e);
-                        })
+                        .catch((e) => {
+                           alert("我们遇到了一个错误：\n" + e);
+                        });
                   });
                },
             },
