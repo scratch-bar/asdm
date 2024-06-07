@@ -160,7 +160,8 @@
                         .get(`${this.source}output/data.json`)
                         .then((res) => {
                            this.data = res.data;
-                        });
+                        })
+                        .catch(e => alert(`我们在从 ${this.source} 获取下载清单时遇到了一个错误：\n${e}`))
                   },
                   immediate: true
                },
@@ -184,6 +185,7 @@
                   this.chunkLoaded = [];
                   let chunks = [],
                      sum = 0;
+                  const source = axios.CancelToken.source();
                   item.download.forEach((chunk, index) => {
                      let chunkUrl = `${this.source}output/${chunk}`;
                      axios
@@ -193,11 +195,12 @@
                               this.chunkLoaded[index] = e.loaded;
                               this.progress = this.computeProgress();
                            },
+                           cancelToken: source.token
                         })
                         .then((res) => {
                            chunks[index] = res.data;
                            sum++;
-                           if (sum === item.download.length) {
+                           if (sum === item.download.length && this.currentDownload) {
                               let size = 0;
                               chunks.forEach((c) => (size += c.byteLength));
                               let output = new Uint8Array(size),
@@ -214,7 +217,10 @@
                            }
                         })
                         .catch((e) => {
-                           alert("我们遇到了一个错误：\n" + e);
+                           if (e.name === 'CanceledError') return;
+                           alert("我们在获取 " + chunkUrl + " 时遇到了一个错误：\n" + e);
+                           this.currentDownload = null;
+                           source.cancel('Meet an error');
                         });
                   });
                },
